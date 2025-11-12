@@ -20,7 +20,7 @@ let movies = [
     image: "./images/meleficent.jpg",
   },
   {
-    name: "Anora",
+    name: "snow white",
     des: "Anora, a Brooklyn stripper, finds her life upended after marrying a Russian oligarch’s son, leading to chaos and self-discovery.",
     image: "./images/anora1.jpg",
   },
