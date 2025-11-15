@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Serve static files from 'public' folder
-app.use(express.static("public"));
+app.use("/", express.static(path.join(__dirname, "public")));
 
 // API endpoint to send the API key to the client
 app.get("/api/config", (req, res) => {
