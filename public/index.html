@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disney+ Hotstar Clone (API Driven)</title>
+    <link href="style.css" rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  </head>
+  <body class="bg-hotstar-dark text-white overflow-x-hidden">
+    <aside
+      id="sidebar"
+      class="fixed top-0 left-0 h-screen w-32 hover:w-64 p-6 flex flex-col z-50 transition-all duration-300 ease-in-out group bg-transparent bg-gradient-to-r from-black/70 to-transparent group-hover:bg-gradient-to-r group-hover:from-black/100 group-hover:to-hotstar-nav/0"
+    >
+      <!-- LOGO (does NOT move now) -->
+      <div class="flex items-center mb-8">
+        <a href="#">
+          <img
+            src="/images/logo.png"
+            class="h-10 w-auto"
+            alt="Disney+ Hotstar Logo"
+          />
+        </a>
+      </div>
+
+      <!-- MENU ITEMS -->
+      <div class="flex-1 flex items-center">
+        <ul class="flex flex-col space-y-10 w-full">
+          <!-- MENU ITEM TEMPLATE -->
+          <li>
+            <a
+              href="#"
+              class="relative flex items-center text-gray-400 hover:text-white transition-colors"
+            >
+              <!-- Gradient only behind text -->
+              <span
+                class="absolute inset-y-0 left-20 right-0 bg-gradient-to-r from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-md"
+              ></span>
+
+              <!-- Icon -->
+              <span class="flex-shrink-0 flex justify-center w-20">
+                <i class="fa-solid fa-house text-xl"></i>
+              </span>
+
+              <!-- Text -->
+              <span
+                class="ml-3 whitespace-nowrap font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                Home
+              </span>
+            </a>
+          </li>
+
+          <!-- SEARCH -->
+          <li>
+            <a
+              href="#"
+              class="relative flex items-center text-gray-400 hover:text-white transition-colors"
+            >
+              <span
+                class="absolute inset-y-0 left-20 right-0 bg-gradient-to-r from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-md"
+              ></span>
+
+              <span class="flex-shrink-0 flex justify-center w-20">
+                <i class="fa-solid fa-magnifying-glass text-xl"></i>
+              </span>
+
+              <span
+                class="ml-3 whitespace-nowrap font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                Search
+              </span>
+            </a>
+          </li>
+
+          <!-- TV -->
+          <li>
+            <a
+              href="#"
+              class="relative flex items-center text-gray-400 hover:text-white transition-colors"
+            >
+              <span
+                class="absolute inset-y-0 left-20 right-0 bg-gradient-to-r from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-md"
+              ></span>
+
+              <span class="flex-shrink-0 flex justify-center w-20">
+                <i class="fa-solid fa-tv text-xl"></i>
+              </span>
+
+              <span
+                class="ml-3 whitespace-nowrap font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                TV
+              </span>
+            </a>
+          </li>
+
+          <!-- Movies -->
+          <li>
+            <a
+              href="#"
+              class="relative flex items-center text-gray-400 hover:text-white transition-colors"
+            >
+              <span
+                class="absolute inset-y-0 left-20 right-0 bg-gradient-to-r from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-md"
+              ></span>
+
+              <span class="flex-shrink-0 flex justify-center w-20">
+                <i class="fa-solid fa-film text-xl"></i>
+              </span>
+
+              <span
+                class="ml-3 whitespace-nowrap font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                Movies
+              </span>
+            </a>
+          </li>
+
+          <!-- Sports -->
+          <li>
+            <a
+              href="#"
+              class="relative flex items-center text-gray-400 hover:text-white transition-colors"
+            >
+              <span
+                class="absolute inset-y-0 left-20 right-0 bg-gradient-to-r from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-md"
+              ></span>
+
+              <span class="flex-shrink-0 flex justify-center w-20">
+                <i class="fa-solid fa-football text-xl"></i>
+              </span>
+
+              <span
+                class="ml-3 whitespace-nowrap font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                Sports
+              </span>
+            </a>
+          </li>
+
+          <!-- Categories -->
+          <li>
+            <a
+              href="#"
+              class="relative flex items-center text-gray-400 hover:text-white transition-colors"
+            >
+              <span
+                class="absolute inset-y-0 left-20 right-0 bg-gradient-to-r from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-md"
+              ></span>
+
+              <span class="flex-shrink-0 flex justify-center w-20">
+                <i class="fa-solid fa-layer-group text-xl"></i>
+              </span>
+
+              <span
+                class="ml-3 whitespace-nowrap font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              >
+                Categories
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- MY SPACE -->
+      <div class="mt-8">
+        <a
+          href="#"
+          class="relative flex items-center text-gray-400 hover:text-white transition-colors"
+        >
+          <span
+            class="absolute inset-y-0 left-20 right-0 bg-gradient-to-r from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-md"
+          ></span>
+
+          <span class="flex-shrink-0 flex justify-center w-20">
+            <i class="fa-solid fa-user text-xl"></i>
+          </span>
+
+          <span
+            class="ml-3 whitespace-nowrap font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            My Space
+          </span>
+        </a>
+      </div>
+    </aside>
+
+    <div class="peer-hover:ml-64 transition-all duration-300 ease-in-out">
+      <div
+        id="main-carousel"
+        class="relative w-full mb-12"
+        data-carousel="slide"
+      >
+        <div class="relative h-screen overflow-hidden">
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent p-12 md:p-16 lg:pl-32 lg:pb-10 flex flex-col justify-end"
+            >
+              <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                Loading...
+              </h1>
+              <p class="text-lg text-gray-200 max-w-lg">
+                Loading description...
+              </p>
+            </div>
+            <img
+              src=""
+              class="absolute block w-full h-full object-cover object-top -z-10"
+              alt="Loading..."
+            />
+          </div>
+
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent p-12 md:p-16 lg:pl-32 lg:pb-10 flex flex-col justify-end"
+            >
+              <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                Loading...
+              </h1>
+              <p class="text-lg text-gray-200 max-w-lg">
+                Loading description...
+              </p>
+            </div>
+            <img
+              src=""
+              class="absolute block w-full h-full object-cover object-top -z-10"
+              alt="Loading..."
+            />
+          </div>
+
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent p-12 md:p-16 lg:pl-32 lg:pb-10 flex flex-col justify-end"
+            >
+              <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                Loading...
+              </h1>
+              <p class="text-lg text-gray-200 max-w-lg">
+                Loading description...
+              </p>
+            </div>
+            <img
+              src=""
+              class="absolute block w-full h-full object-cover object-top -z-10"
+              alt="Loading..."
+            />
+          </div>
+
+          <div class="hidden duration-700 ease-in-out" data-carousel-item>
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent p-12 md:p-16 lg:pl-32 lg:pb-10 flex flex-col justify-end"
+            >
+              <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                Loading...
+              </h1>
+              <p class="text-lg text-gray-200 max-w-lg">
+                Loading description...
+              </p>
+            </div>
+            <img
+              src=""
+              class="absolute block w-full h-full object-cover object-top -z-10"
+              alt="Loading..."
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="px-4 md:px-12 mb-12 ml-16" id="brand-cards-container">
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+          <div
+            class="brand-card opacity-0 translate-y-12 rounded-lg overflow-hidden shadow-lg border-2 border-gray-700 hover:border-white transition-all duration-300 transform hover:scale-105"
+          >
+            <img
+              src="/images/disney.PNG"
+              class="w-full h-full object-cover"
+              alt="Disney"
+            />
+          </div>
+          <div
+            class="brand-card opacity-0 translate-y-12 rounded-lg overflow-hidden shadow-lg border-2 border-gray-700 hover:border-white transition-all duration-300 transform hover:scale-105"
+          >
+            <img
+              src="/images/geographic.PNG"
+              class="w-full h-full object-cover"
+              alt="National Geographic"
+            />
+          </div>
+          <div
+            class="brand-card opacity-0 translate-y-12 rounded-lg overflow-hidden shadow-lg border-2 border-gray-700 hover:border-white transition-all duration-300 transform hover:scale-105"
+          >
+            <img
+              src="/images/marvel.PNG"
+              class="w-full h-full object-cover"
+              alt="Marvel"
+            />
+          </div>
+          <div
+            class="brand-card opacity-0 translate-y-12 rounded-lg overflow-hidden shadow-lg border-2 border-gray-700 hover:border-white transition-all duration-300 transform hover:scale-105"
+          >
+            <img
+              src="/images/pixar.PNG"
+              class="w-full h-full object-cover"
+              alt="Pixar"
+            />
+          </div>
+          <div
+            class="brand-card opacity-0 translate-y-12 rounded-lg overflow-hidden shadow-lg border-2 border-gray-700 hover:border-white transition-all duration-300 transform hover:scale-105"
+          >
+            <img
+              src="/images/star-wars.PNG"
+              class="w-full h-full object-cover"
+              alt="Star Wars"
+            />
+          </div>
+        </div>
+      </div>
+
+      <section class="movie-list-section p-0 m-0 mb-4 ml-32">
+        <div class="relative group">
+          <h2 class="text-xl text-[#E1E6F0] mb-4">Recommended For You</h2>
+          <button
+            onclick="scrollRow('recommended-container', 'prev')"
+            class="absolute top-1/2 -left-4 -translate-y-1/2 z-10 bg-hotstar-dark/80 hover:bg-hotstar-dark w-12 h-12 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <svg
+              class="w-6 h-6 text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 8 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"
+              />
+            </svg>
+            <span class="sr-only">Previous</span>
+          </button>
+          <div
+            id="recommended-container"
+            class="flex overflow-x-auto space-x-4 p-0 no-scrollbar scroll-smooth"
+          ></div>
+          <button
+            onclick="scrollRow('recommended-container', 'next')"
+            class="absolute top-1/2 -right-4 -translate-y-1/2 z-10 w-16 h-full flex items-center justify-center bg-gradient-to-r from-transparent to-black/80 hover:to-black opacity-0 translate-x-5 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+          >
+            <svg
+              class="w-6 h-6 text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 8 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 13 5.7-5.326a.91.91 0 0 0 0-1.348L1 1"
+              />
+            </svg>
+            <span class="sr-only">Next</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="movie-list-section p-0 m-0 mb-4 ml-32">
+        <h2 class="text-xl text-[#E1E6F0] mb-4">Popular Shows</h2>
+        <div class="relative group">
+          <button
+            onclick="scrollRow('popular-container', 'prev')"
+            class="absolute top-1/2 -left-4 -translate-y-1/2 z-10 bg-hotstar-dark/80 hover:bg-hotstar-dark w-12 h-12 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <svg
+              class="w-6 h-6 text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 8 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"
+              />
+            </svg>
+            <span class="sr-only">Previous</span>
+          </button>
+          <div
+            id="popular-container"
+            class="flex overflow-x-auto space-x-4 p-4 no-scrollbar scroll-smooth"
+          ></div>
+          <button
+            onclick="scrollRow('popular-container', 'next')"
+            class="absolute top-1/2 -right-4 -translate-y-1/2 z-10 w-16 h-full flex items-center justify-center bg-gradient-to-r from-transparent to-black/80 hover:to-black opacity-0 translate-x-5 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+          >
+            <svg
+              class="w-6 h-6 text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 8 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 13 5.7-5.326a.91.91 0 0 0 0-1.348L1 1"
+              />
+            </svg>
+            <span class="sr-only">Next</span>
+          </button>
+        </div>
+      </section>
+
+      <section class="movie-list-section p-0 m-0 mb-4 ml-32">
+        <h2 class="text-xl text-[#E1E6F0] mb-4">Family & Animation</h2>
+        <div class="relative group">
+          <button
+            onclick="scrollRow('family-container', 'prev')"
+            class="absolute top-1/2 -left-4 -translate-y-1/2 z-10 bg-hotstar-dark/80 hover:bg-hotstar-dark w-12 h-12 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <svg
+              class="w-6 h-6 text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 8 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M7 1 1.3 6.326a.91.91 0 0 0 0 1.348L7 13"
+              />
+            </svg>
+            <span class="sr-only">Previous</span>
+          </button>
+          <div
+            id="family-container"
+            class="flex overflow-x-auto space-x-4 p-4 no-scrollbar scroll-smooth"
+          ></div>
+          <button
+            onclick="scrollRow('family-container', 'next')"
+            class="absolute top-1/2 -right-4 -translate-y-1/2 z-10 w-16 h-full flex items-center justify-center bg-gradient-to-r from-transparent to-black/80 hover:to-black opacity-0 translate-x-5 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300"
+          >
+            <svg
+              class="w-6 h-6 text-white"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 8 14"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 13 5.7-5.326a.91.91 0 0 0 0-1.348L1 1"
+              />
+            </svg>
+            <span class="sr-only">Next</span>
+          </button>
+        </div>
+      </section>
+    </div>
+    <div
+      id="trailer-modal"
+      tabindex="-1"
+      aria-hidden="true"
+      class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-modal md:h-full"
+    >
+      <div class="relative p-4 w-full max-w-4xl h-full md:h-auto">
+        <div class="relative bg-hotstar-gray rounded-lg shadow">
+          <div class="relative w-full aspect-video">
+            <button
+              type="button"
+              class="absolute top-3 right-3 z-10 text-white bg-black/50 hover:bg-black/80 rounded-full p-2"
+              data-modal-hide="trailer-modal"
+            >
+              <svg
+                class="w-5 h-5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 14"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                />
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+            <iframe
+              id="modal-video-iframe"
+              class="absolute top-0 left-0 w-full h-full rounded-t-lg"
+              src=""
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              allowfullscreen
+            ></iframe>
+          </div>
+
+          <div class="p-6">
+            <h3
+              id="modal-movie-title"
+              class="text-3xl font-bold text-white mb-2"
+            >
+              Loading...
+            </h3>
+            <p
+              id="modal-movie-overview"
+              class="text-base leading-relaxed text-gray-300"
+            >
+              Loading description...
+            </p>
+            <div class="flex items-center space-x-4 mt-6">
+              <a
+                id="modal-play-button"
+                href="#"
+                target="_blank"
+                class="flex items-center justify-center text-black bg-white hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 font-bold rounded-lg text-lg px-8 py-3"
+              >
+                <i class="fa-solid fa-play mr-2"></i>
+                Watch Now
+              </a>
+              <button
+                id="modal-watchlist-button"
+                type="button"
+                class="flex items-center justify-center text-white bg-white/10 hover:bg-white/20 focus:ring-4 focus:outline-none focus:ring-white/30 font-medium rounded-lg text-lg px-8 py-3"
+              >
+                <i class="fa-solid fa-plus mr-2"></i>
+                Add to Watchlist
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="app.js" defer></script>
+  </body>
+</html>
