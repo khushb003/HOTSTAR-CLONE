@@ -25,6 +25,7 @@
   "dependencies": {
     "dotenv": "^16.6.1",
     "express": "^4.21.2",
-    "flowbite": "^2.5.2"
+    "flowbite": "^2.5.2",
+    "serve-favicon": "^2.5.1"
   }
 }
