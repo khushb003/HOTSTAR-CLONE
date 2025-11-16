@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Hotstar Clone</title>
+
+    <link href="style.css" rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+  </head>
+
+  <body
+    class="bg-hotstar-dark text-white min-h-screen flex items-center justify-center p-4"
+  >
+    <a
+      href="/"
+      class="absolute top-6 left-6 text-gray-400 hover:text-white transition-colors"
+    >
+      <i class="fa-solid fa-arrow-left fa-lg"></i>
+      <span class="sr-only">Back to Home</span>
+    </a>
+
+    <div class="bg-hotstar-dark p-8 rounded-lg shadow-xl w-full max-w-md">
+      <div class="flex justify-center mb-6">
+        <img src="/homelogo.png" class="h-20 w-auto" alt="Logo" />
+      </div>
+
+      <div class="text-center mb-6">
+        <h1 class="text-2xl font-bold text-white mb-2">Log in to continue</h1>
+        <p class="text-gray-400">Enter your mobile number to get an OTP</p>
+      </div>
+
+      <form action="#">
+        <div>
+          <label for="phone" class="sr-only">Mobile Number</label>
+          <div class="relative flex gap-2">
+            <input id="counry-code"" name="counry-code"" class="block w-1/4 p-3
+            text-center bg-hotstar-dark border border-gray-600 text-white
+            rounded-lg focus:ring-hotstar-blue focus:border-hotstar-blue"
+            value="+91" required disabled />
+            <div class="relative w-full">
+              <input
+                type="text"
+                inputmode="text"
+                id="phone"
+                class="block px-2.5 p-2.5 pt-4 w-full text-white font-semibold leading-5 text-balance bg-hotstar-dark rounded-lg border border-gray-500 appearance-none focus:outline-none focus:ring-0 focus:border-gray-300 peer tracking-wider"
+                placeholder=" "
+              />
+              <label
+                for="phone"
+                class="absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-hotstar-dark px-2 peer-focus:px-2 peer-focus:text-border-gray-300 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
+              >
+                Enter mobile number
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-xs text-gray-500 mt-4 text-center">
+          By proceeding, you agree to the
+          <a href="#" class="text-hotstar-blue hover:underline">Terms of Use</a>
+          &
+          <a href="#" class="text-hotstar-blue hover:underline"
+            >Privacy Policy</a
+          >.
+        </p>
+
+        <button
+          type="submit"
+          class="w-full bg-hotstar-blue hover:bg-hotstar-blue/90 text-white font-bold py-3 px-4 rounded-lg mt-6 transition-colors"
+        >
+          Get OTP
+        </button>
+      </form>
+
+      <div class="text-center mt-6">
+        <p class="text-sm text-gray-400">
+          Having trouble logging in?
+          <a href="#" class="text-hotstar-blue hover:underline">Get Help</a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
