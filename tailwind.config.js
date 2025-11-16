@@ -10,14 +10,14 @@ module.exports = {
       colors: {
         hotstar: {
           // Primary & Brand
-          blue: "#1f80e0", // Main Hotstar blue
+          blue: "#C99F55", // Main Hotstar blue
           blueLight: "#66b3ff", // Hover/active blue
 
           // Backgrounds
           dark: "#0f1014", // Entire app background
           nav: "#0f1014", // Navbar/footer background
           card: "#1c2331", // Movie cards / sections
-          cardHover: "#263247", // Hover effect background
+          cardHover: "#ebd189", // Hover effect background
 
           // Text
           textLight: "#e6e6e6", // For titles
