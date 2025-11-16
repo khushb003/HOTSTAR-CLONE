@@ -1,5 +1,7 @@
 # Disney+ Hotstar Clone 🚀
 
+![School Logo](https://raw.githubusercontent.com/khushb003/HOTSTAR-CLONE/refs/heads/main/public/images/banner.png)
+
 This is a school project that clones the front-end and core functionality of the Disney+ Hotstar streaming platform. It is built with a modern stack, featuring a Node.js backend to securely serve API keys and a dynamic, responsive front-end built with Tailwind CSS and JavaScript.
 
 The application fetches real-time movie and show data from **The Movie Database (TMDB) API** to populate the UI.
