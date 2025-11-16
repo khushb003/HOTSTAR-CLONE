@@ -3,10 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image" href="/favicon.ico" />
-    <title>Disney+ Hotstar</title>
-    <link href="style.css" rel="stylesheet" />
 
+    <title>StreamFlix - Watch Movies, Shows, and More</title>
+
+    <meta
+      name="description"
+      content="StreamFlix is a modern streaming platform clone built as a school project. Watch the latest trending movies, popular shows, and family-friendly animations."
+    />
+    <meta name="author" content="[Your Name Here]" />
+    <meta property="og:title" content="StreamFlix - Streaming Platform Clone" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="A responsive clone of a modern streaming service, built with Tailwind CSS and the TMDB API."
+    />
+    <meta property="og:image" content="[LINK_TO_YOUR_PREVIEW_IMAGE]" />
+    <meta property="og:url" content="[LINK_TO_YOUR_LIVE_SITE]" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <link href="style.css" rel="stylesheet" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -17,14 +32,14 @@
   <body class="bg-hotstar-dark text-white overflow-x-hidden">
     <aside
       id="sidebar"
-      class="fixed top-0 left-0 h-screen w-32 hover:w-64 p-6 flex flex-col z-50 transition-all duration-300 ease-in-out group bg-transparent bg-gradient-to-r from-black/70 to-transparent group-hover:bg-gradient-to-r group-hover:from-black/100 group-hover:to-hotstar-nav/0"
+      class="fixed top-0 left-0 h-screen w-32 hover:w-64 p-6 flex flex-col z-50 transition-all duration-300 ease-in-out group bg-transparent bg-gradient-to-r from-black/70 to-transparent group-hover:bg-gradient-to-r group-hover:from-black/100 group-hover:to-hotstar-nav/0 overflow-x-hidden"
     >
       <!-- LOGO (does NOT move now) -->
       <div class="flex items-center mb-8">
         <a href="#">
           <img
             src="/homelogo.png"
-            class="h-auto w-20"
+            class="h-auto w-20 scale-75"
             alt="Disney+ Hotstar Logo"
           />
         </a>
@@ -173,7 +188,7 @@
       <!-- MY SPACE -->
       <div class="mt-8">
         <a
-          href="#"
+          href="/login.html"
           class="relative flex items-center text-gray-400 hover:text-white transition-colors"
         >
           <span
@@ -325,7 +340,7 @@
       </div>
 
       <section class="movie-list-section p-0 m-0 mb-4 ml-32">
-        <div class="relative group">
+        <div class="relative">
           <h2 class="text-xl text-[#E1E6F0] mb-4">Recommended For You</h2>
           <button
             onclick="scrollRow('recommended-container', 'prev')"
@@ -378,7 +393,7 @@
 
       <section class="movie-list-section p-0 m-0 mb-4 ml-32">
         <h2 class="text-xl text-[#E1E6F0] mb-4">Popular Shows</h2>
-        <div class="relative group">
+        <div class="relative">
           <button
             onclick="scrollRow('popular-container', 'prev')"
             class="absolute top-1/2 -left-4 -translate-y-1/2 z-10 bg-hotstar-dark/80 hover:bg-hotstar-dark w-12 h-12 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -430,7 +445,7 @@
 
       <section class="movie-list-section p-0 m-0 mb-4 ml-32">
         <h2 class="text-xl text-[#E1E6F0] mb-4">Family & Animation</h2>
-        <div class="relative group">
+        <div class="relative">
           <button
             onclick="scrollRow('family-container', 'prev')"
             class="absolute top-1/2 -left-4 -translate-y-1/2 z-10 bg-hotstar-dark/80 hover:bg-hotstar-dark w-12 h-12 flex items-center justify-center rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
