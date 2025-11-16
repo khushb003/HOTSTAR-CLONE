@@ -67,29 +67,44 @@ function createMovieCard(movie) {
     : "https://via.placeholder.com/500x750?text=No+Image";
 
   return `
-        <div class="movie-card flex-shrink-0 w-64 h-auto">
-            <div class="relative group w-full rounded-lg overflow-hidden shadow-lg 
-                        transform hover:scale-105 transition-transform duration-300
-                        border border-gray-700/50">
-                <a href="#">
-                    <img class="w-full h-full object-cover aspect-[2/3]" src="${posterPath}" alt="${title} poster" />
-                </a>
+    <div class="movie-card flex-shrink-0 w-44 h-auto">
+      <!-- ONLY this div should be the group -->
+      <div class="relative group w-full rounded-lg overflow-hidden shadow-lg 
+                  transform hover:scale-105 transition-transform duration-300
+                  border border-gray-700/50">
+          
+        <a href="#">
+          <img class="w-full h-full object-cover aspect-[2/3]"
+               src="${posterPath}"
+               alt="${title} poster" />
+        </a>
 
-                <div class="absolute bottom-0 left-0 right-0 p-4
-                            bg-gradient-to-t from-black/90 via-black/70 to-transparent
-                            opacity-0 group-hover:opacity-100
-                            translate-y-4 group-hover:translate-y-0
-                            transition-all duration-300 ease-in-out">
-                    
-                    <h5 class="mb-1 text-lg font-bold tracking-tight text-white truncate" title="${title}">${title}</h5>
-                    <p class="mb-2 font-normal text-sm text-gray-300 line-clamp-2">${overview}</p>
-                    <button class="w-full text-white bg-hotstar-blue hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-2 text-center">
-                        <i class="fa-solid fa-play"></i> Watch Now
-                    </button>
-                </div>
-            </div>
+        <!-- This part will show only when THIS card is hovered -->
+        <div class="absolute bottom-0 left-0 right-0 p-4
+                    bg-gradient-to-t from-black/90 via-black/70 to-transparent
+                    opacity-0 group-hover:opacity-100
+                    translate-y-4 group-hover:translate-y-0
+                    transition-all duration-300 ease-in-out">
+
+          <h5 class="mb-1 text-lg font-bold tracking-tight text-white truncate"
+              title="${title}">
+            ${title}
+          </h5>
+
+          <p class="mb-2 font-normal text-sm text-gray-300 line-clamp-2">
+            ${overview}
+          </p>
+
+          <button class="w-full text-white bg-hotstar-blue hover:bg-hotstar-blue/90
+                         focus:ring-2 focus:ring-hotstar-blue font-medium rounded-lg
+                         text-sm px-3 py-2 text-center">
+            <i class="fa-solid fa-play"></i> Watch Now
+          </button>
+
         </div>
-    `;
+      </div>
+    </div>
+  `;
 }
 
 /**
