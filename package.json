@@ -15,7 +15,7 @@
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
-    "start": "pm2 start server.js --name streamFlix",
+    "start": "pm2 start server.js --name hotstar-clone --env production",
     "dev": "nodemon server.js",
     "build:css": "npx tailwindcss -i ./public/src/input.css -o ./public/style.css --watch"
   },
