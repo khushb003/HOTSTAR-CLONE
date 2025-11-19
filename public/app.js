@@ -73,7 +73,7 @@ function createMovieCard(movie) {
                   transform hover:scale-105 transition-transform duration-300
                   border border-gray-700/50">
           
-        <a href="#">
+        <a href="/movie.html?id=${movie.id}" class="block">
           <img class="w-full h-full object-cover aspect-[2/3]"
                src="${posterPath}"
                alt="${title} poster" />
@@ -95,11 +95,11 @@ function createMovieCard(movie) {
             ${overview}
           </p>
 
-          <button class="w-full text-white bg-hotstar-blue hover:bg-hotstar-blue/90
+          <a href="/movie.html?id=${movie.id}" class="w-full text-white bg-hotstar-blue hover:bg-hotstar-blue/90
                          focus:ring-2 focus:ring-hotstar-blue font-medium rounded-lg
                          text-sm px-3 py-2 text-center">
             <i class="fa-solid fa-play"></i> Watch Now
-          </button>
+          </a>
 
         </div>
       </div>
@@ -231,6 +231,32 @@ function initAnimations() {
   });
 }
 
+async function fetchMovieDetails(movieId = 1054867) {
+  // Construct the endpoint for a single movie's details
+  const endpoint = `/movie/${movieId}`;
+
+  // Construct the full URL with the API key
+  const url = `${API_BASE_URL}${endpoint}?api_key=95a8b91a22c3478263aa19d542f25fc3`;
+
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      console.error(`API Error: ${response.status} for URL: ${url}`);
+      return null;
+    }
+
+    const data = await response.json();
+
+    // IMPORTANT: Unlike the previous function, this endpoint returns the
+    // movie detail object DIRECTLY, not wrapped in a 'results' array.
+    console.log(data);
+    return data; // Returns the full movie object
+  } catch (error) {
+    console.error("Fetch Error:", error);
+    return null;
+  }
+}
 // --- 4. Main Initialization ---
 
 async function initializePage() {
@@ -260,6 +286,8 @@ async function initializePage() {
   // 5. Run animations
   initAnimations();
 }
+
+let something = fetchMovieDetails();
 
 // Wait for the DOM to be fully loaded before running our script
 document.addEventListener("DOMContentLoaded", initializePage);
