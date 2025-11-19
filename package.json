@@ -15,6 +15,7 @@
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
+    "start": "pm2 start server.js --name streamFlix",
     "dev": "nodemon server.js",
     "build:css": "npx tailwindcss -i ./public/src/input.css -o ./public/style.css --watch"
   },
@@ -26,6 +27,7 @@
     "dotenv": "^16.6.1",
     "express": "^4.21.2",
     "flowbite": "^2.5.2",
+    "pm2": "^6.0.13",
     "serve-favicon": "^2.5.1"
   }
 }
