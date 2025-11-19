@@ -1,0 +1,10 @@
+services:
+  api:
+    image: amrit54300/streamflix-api:latest
+    restart: always
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
