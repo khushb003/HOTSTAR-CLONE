@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Details - StreamFlix</title>
+
+    <link href="style.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+
+    <style>
+      /* Hide scrollbar for clean UI */
+      body::-webkit-scrollbar {
+        display: none;
+      }
+      body {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      /* Smooth fade for background images */
+      #backdrop-img {
+        transition: opacity 0.5s ease-in-out;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-[#0f1014] text-white min-h-screen font-sans overflow-x-hidden"
+  >
+    <!-- Back Navigation -->
+    <a
+      href="/"
+      class="fixed top-8 left-8 z-50 flex items-center justify-center w-12 h-12 bg-white/10 hover:bg-white/20 backdrop-blur-md rounded-full transition-all duration-300 group"
+    >
+      <i
+        class="fa-solid fa-arrow-left text-xl text-white group-hover:-translate-x-1 transition-transform"
+      ></i>
+    </a>
+
+    <!-- Loading Overlay -->
+    <div
+      id="loading"
+      class="fixed inset-0 z-[60] flex flex-col items-center justify-center bg-[#0f1014]"
+    >
+      <svg
+        class="animate-spin h-12 w-12 text-blue-600 mb-4"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          class="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          stroke-width="4"
+        ></circle>
+        <path
+          class="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        ></path>
+      </svg>
+      <p class="text-gray-400 tracking-wider text-sm">LOADING MOVIE</p>
+    </div>
+
+    <!-- Error Overlay -->
+    <div
+      id="error-message"
+      class="hidden fixed inset-0 z-[60] flex flex-col items-center justify-center bg-[#0f1014] text-center px-4"
+    >
+      <i class="fa-regular fa-circle-xmark text-5xl text-red-500 mb-4"></i>
+      <h2 class="text-2xl font-bold mb-2">Something went wrong</h2>
+      <p id="error-text" class="text-gray-400 mb-6"></p>
+      <a
+        href="/"
+        class="px-6 py-2 bg-white text-black font-semibold rounded hover:bg-gray-200 transition-colors"
+        >Go Home</a
+      >
+    </div>
+
+    <!-- Main Content Container -->
+    <div id="movie-details" class="hidden relative min-h-screen w-full">
+      <!-- 
+        BACKGROUND LAYER 
+        1. Video Trailer (Bottom Layer)
+        2. Image Backdrop (Fallback if no video)
+        3. Gradients (Top Layer for readability)
+      -->
+      <div class="absolute inset-0 w-full h-screen overflow-hidden">
+        <!-- Trailer Container (Autoplay Background) -->
+        <div
+          id="trailer-container"
+          class="absolute inset-0 w-full h-full z-0 pointer-events-none scale-125"
+        >
+          <!-- JS injects iframe here -->
+        </div>
+
+        <!-- Backdrop Image (Fallback) -->
+        <div
+          id="backdrop-img"
+          class="absolute inset-0 w-full h-full bg-cover bg-center z-[-1]"
+          style="background-image: url('')"
+        ></div>
+
+        <!-- Gradient Overlays -->
+        <!-- Left Gradient (Strong) -->
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-[#0f1014] via-[#0f1014]/60 to-transparent z-10"
+        ></div>
+      </div>
+
+      <!-- 
+        CONTENT LAYER (Left Side)
+      -->
+      <div
+        class="relative z-20 container mx-auto px-8 md:px-16 flex items-end h-screen pb-8"
+      >
+        <div class="max-w-2xl space-y-6">
+          <!-- Movie Title -->
+          <h1
+            id="movie-title"
+            class="text-2xl md:text-3xl font-black text-white leading-tight tracking-tight drop-shadow-lg"
+          >
+            <!-- JS fills this -->
+          </h1>
+
+          <!-- Metadata Line (Year • Runtime • Language) -->
+          <div
+            class="flex flex-wrap items-center gap-3 text-base md:text-sm font-medium text-gray-300"
+          >
+            <span id="movie-release-date"></span>
+            <span class="text-gray-500 text-xs">•</span>
+            <span id="movie-runtime"></span>
+            <span class="text-gray-500 text-xs">•</span>
+            <span id="movie-original-lang" class="uppercase"></span>
+            <span class="text-gray-500 text-xs">•</span>
+            <span
+              class="bg-gray-800 px-2 py-0.5 rounded text-xs text-gray-400 border border-gray-700"
+              >U/A 16+</span
+            >
+          </div>
+
+          <!-- Description -->
+          <p
+            id="movie-overview"
+            class="text-gray-300 max-w-[424px] text-sm leading-relaxed line-clamp-4 md:line-clamp-none drop-shadow-md pr-4"
+          >
+            <!-- JS fills this -->
+          </p>
+
+          <!-- Genres (Hidden from this layout or styled minimally) -->
+          <div id="movie-genres" class="flex flex-wrap gap-2">
+            <!-- JS Badges appear here. CSS ensures they look subtle -->
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4">
+            <!-- Watch Now -->
+            <a
+              id="watch-now-btn"
+              href="#"
+              target="_blank"
+              class="flex items-center justify-center gap-3 w-full sm:w-auto bg-white/90 hover:bg-white text-black font-bold text-lg px-12 py-4 rounded-lg transition-transform transform hover:scale-105"
+            >
+              <i class="fa-solid fa-play text-xl"></i>
+              <span>Watch Now</span>
+            </a>
+
+            <!-- Watchlist -->
+            <button
+              class="flex items-center justify-center gap-3 w-full sm:w-auto bg-[#ffffff1a] hover:bg-[#ffffff33] backdrop-blur-sm border border-[#ffffff1a] text-white font-semibold text-lg px-10 py-4 rounded-lg transition-colors"
+            >
+              <i class="fa-solid fa-plus text-xl"></i>
+              <span>Watchlist</span>
+            </button>
+          </div>
+
+          <!-- Hidden elements required by JS to avoid errors, but not shown in this specific design -->
+          <div class="hidden">
+            <span id="movie-tagline"></span>
+            <span id="movie-rating"></span>
+            <span id="vote-count"></span>
+            <span id="movie-budget"></span>
+            <span id="movie-revenue"></span>
+            <img id="poster-img" src="" />
+            <p id="no-trailer-message"></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs Section (Below Fold - Placeholder) -->
+      <div class="relative z-20 bg-[#0f1014] px-8 md:px-16 pb-20">
+        <div class="border-b border-gray-800 mb-8">
+          <div class="flex gap-8">
+            <button
+              class="text-white border-b-2 border-white pb-4 font-bold text-lg"
+            >
+              More Like This
+            </button>
+            <button
+              class="text-gray-500 hover:text-gray-300 pb-4 font-bold text-lg transition-colors"
+            >
+              Trailers & More
+            </button>
+          </div>
+        </div>
+
+        <!-- Placeholder Content for "More Like This" -->
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+          <!-- Placeholder Cards -->
+          <div class="aspect-[2/3] bg-gray-800 rounded-lg animate-pulse"></div>
+          <div class="aspect-[2/3] bg-gray-800 rounded-lg animate-pulse"></div>
+          <div class="aspect-[2/3] bg-gray-800 rounded-lg animate-pulse"></div>
+          <div class="aspect-[2/3] bg-gray-800 rounded-lg animate-pulse"></div>
+          <div class="aspect-[2/3] bg-gray-800 rounded-lg animate-pulse"></div>
+          <div class="aspect-[2/3] bg-gray-800 rounded-lg animate-pulse"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="/movie.js"></script>
+  </body>
+</html>
